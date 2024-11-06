@@ -3,13 +3,18 @@ const router = express.Router()
 const funcionario = require('../models/funcionario')
 const departamento = require('../models/departamento')
 
-router.get('/store', async (req, res) =>{
+router.post('/store', async (req, res) =>{
   const resultado = await funcionario.create({
-    nome: 'Joaquim Netto',
-    salario: 7500,
-    cargo: 'Desenvolvedor',
-    departamentoId: 1
+    nome:req.body.nome,
+    salario:req.body.salario,
+    cargo:req.body.cargo,
+    departamentoId:req.body.departamento
   })
+  if({resultado}){
+    res.redirect('/')
+  }
+  else{
+    res.jason({erro:"Erro ao cadastrar o funcionário"})}
 })
 
 router.get('/', async (req, res) =>{
@@ -24,6 +29,18 @@ router.get('/show', async (req, res) =>{
   else{
     console.log("Não foi possível encontrar o funcionário")
   }
+})
+
+router.get('/destroy/:id', async (req, res) =>{
+  const resultado = await funcionario.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+})
+
+router.get('/create',(req, res) =>{
+  res.render('funcionario/addFuncionario')
 })
 
 module.exports = router

@@ -1,0 +1,30 @@
+<section class="container mt-3">
+  <h1 class="text-center">Cadastro de Funcionário</h1>
+  <form action="/funcionario/store" method="post">
+    {{!-- 1º Campo: Nome --}}
+    <section class="mb-3">
+      <input placeholder="Nome" type="text" class="form-control" id="nome" name="nome">
+    </section>
+    {{!-- 2º Campo: Salário e Cargo --}}
+    <section class="row mb-2">
+      <div class="col-md-6">
+        <input placeholder="Salário" type="text" class="form-control" id="salario" name="salario">
+      </div>
+      <div class="col-md-6">
+        <input placeholder="Cargo" type="text" class="form-control" id="cargo" name="cargo">
+      </div>
+    </section>
+    {{!-- 3º Campo: Selecionar Código do Departamento --}}
+    <section class="mb-2">
+      <select name="departamento" id="departamento" class="form-select">
+        <option value="">Escolha um Departamento...</option>
+        <option value="1">Recursos Humanos</option>
+        <option value="2">Financeiro</option>
+      </select>
+    </section>
+    {{!-- 4º Campo: Botão de Cadastrar --}}
+    <section class="mb-2 d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </section>
+  </form>
+</section>
